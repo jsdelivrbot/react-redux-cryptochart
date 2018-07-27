@@ -1,0 +1,26 @@
+{
+  "name": "react-redux-cryptochart",
+  "version": "1.0.0",
+  "description": "Cryptocurrency market capitalization chart written in react, redux, and node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjgcabrera/react-redux-cryptochart.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "node",
+    "cryptocurrency"
+  ],
+  "author": "Raymond Cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjgcabrera/react-redux-cryptochart/issues"
+  },
+  "homepage": "https://github.com/rjgcabrera/react-redux-cryptochart#readme"
+}
