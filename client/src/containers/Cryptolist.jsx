@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Chart from '../components/chart';
 
 class CryptoList extends Component {
   renderCoinInfo(coin) {
@@ -16,7 +17,7 @@ class CryptoList extends Component {
         <td>{floatToUSD(coin.volume_24h)}</td>
         <td>{`${(coin.circulating_supply).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ${coin.symbol}`}</td>
         <td>{`${coin.percent_change_24h}%`}</td>
-        <td>graph</td>
+        <td><Chart data={coin.price_points} color="red" units="$" /></td>
       </tr>
     )
   }
