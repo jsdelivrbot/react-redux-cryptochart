@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from '../components/chart';
+import { bindActionCreators } from 'redux';
+import { fetchCoins } from '../actions/index';
 
 class CryptoList extends Component {
+  componentDidMount() {
+    this.props.fetchCoins();
+  }
+
   renderCoinInfo(coin) {
     const floatToUSD = (floatNum) => {
       return '$' + (floatNum).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -11,7 +17,6 @@ class CryptoList extends Component {
     return (
       <tr key={coin.name}>
         <td>{coin.name}</td>
-        <td>{coin.symbol}</td>
         <td>{floatToUSD(coin.market_cap)}</td>
         <td>{floatToUSD(coin.price)}</td>
         <td>{floatToUSD(coin.volume_24h)}</td>
@@ -28,7 +33,6 @@ class CryptoList extends Component {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Symbol</th>
             <th>Market Cap ($)</th>
             <th>Price ($)</th>
             <th>Volume (24h)</th>
@@ -50,5 +54,9 @@ function mapStateToProps({ coins }) {
   return { coins };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCoins }, dispatch);
+}
+
 //export default CryptoList;
-export default connect(mapStateToProps)(CryptoList);
+export default connect(mapStateToProps, mapDispatchToProps)(CryptoList);
