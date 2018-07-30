@@ -3,7 +3,8 @@ import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-spark
 
 
 function average(data) {
-  return Math.round(data.reduce((acc, curr) => acc + curr), 0);
+  const avg = data.reduce((acc, curr) => acc + curr, 0) / data.length;
+  return (avg).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 export default (props) => {

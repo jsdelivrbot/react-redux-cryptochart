@@ -14,6 +14,14 @@ class CryptoList extends Component {
       return '$' + (floatNum).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
 
+    const posOrNegColor = (percent_change) => {
+      if (percent_change < 0) {
+        return {color: 'red'}
+      } else {
+        return {color: 'green'}
+      }
+    }
+
     return (
       <tr key={coin.name}>
         <td>{coin.name}</td>
@@ -21,8 +29,8 @@ class CryptoList extends Component {
         <td>{floatToUSD(coin.price)}</td>
         <td>{floatToUSD(coin.volume_24h)}</td>
         <td>{`${(coin.circulating_supply).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ${coin.symbol}`}</td>
-        <td>{`${coin.percent_change_24h}%`}</td>
-        <td><Chart data={coin.price_points} color="red" units="$" /></td>
+        <td style={posOrNegColor(coin.percent_change_24h)}>{`${coin.percent_change_24h}%`}</td>
+        <td><Chart data={coin.price_points} color={posOrNegColor(coin.percent_change_24h).color} units="$" /></td>
       </tr>
     )
   }
