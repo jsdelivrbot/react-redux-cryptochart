@@ -22,6 +22,7 @@ export function fetchCoins() {
           price_points: [7477.5, 7333.93, 7405.4, 7398.64, 7718, 8395.82, 8170.23, 7937.25, 8182.89, 8230.87, 8237.66]
         });
       }
+      payload.sort((a, b) => b.market_cap - a.market_cap);
       return payload;
     })
     .then(coinArr => {
